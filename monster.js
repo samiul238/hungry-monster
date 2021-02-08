@@ -9,7 +9,7 @@ recipeCloseBtn.addEventListener('click', () => {
 
 // Meal list With Ingredients
 function getMealList() {
-    let searchInputTxt = document.getElementById('search-input').value;
+    const searchInputTxt = document.getElementById('search-input').value;
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
         .then(response => response.json())
         .then(data => {
@@ -36,7 +36,7 @@ function getMealList() {
         });
 }
 
-// get recipe of the meal
+// Get Meal Recipe
 function getMealRecipe(recipe) {
     recipe.preventDefault();
     if (recipe.target.classList.contains('recipe-btn')) {
@@ -48,6 +48,7 @@ function getMealRecipe(recipe) {
 }
 
 // create Meal Recipe
+
 function mealRecipe(meal) {
     console.log(meal);
     meal = meal[0];
@@ -58,9 +59,7 @@ function mealRecipe(meal) {
         <h2 class = "recipe-title">${meal.strMeal}</h2>
         <div class = "recipe-instruct">
             <h3>Ingredients</h3>
-            <p>
-            ${meal.strInstructions}
-            </p>
+            <p>${meal.strInstructions}</p>    
         </div>  
     `;
     mealDetailsContent.innerHTML = html;
